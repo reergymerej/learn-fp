@@ -1,4 +1,4 @@
-import tap from 'tap'
+import tape from 'tape'
 import monoid, { stringMonoid } from './monoid'
 
 const isFunction = (value) => typeof value === 'function'
@@ -13,7 +13,7 @@ const isMonoid = (x) => hasOwnMethod(x,'value')
 
 
 
-tap.test('stringMonoid', (t) => {
+tape('stringMonoid', (t) => {
   const a = stringMonoid('a')
   const b = stringMonoid('b')
   const c = stringMonoid('c')
@@ -43,7 +43,7 @@ tap.test('stringMonoid', (t) => {
 })
 
 
-tap.test('positiveNumMonoid', (t) => {
+tape('positiveNumMonoid', (t) => {
   const positiveNumMonoid = monoid(
     (a, b) => a + b,
     0

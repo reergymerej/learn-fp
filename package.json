@@ -4,7 +4,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "babel-node src/index.js",
-    "test": "tap",
+    "test": "./node_modules/.bin/tape -r babel-register 'src/**/*test.js'",
+    "test:watch": "nodemon -q --watch src --exec 'yarn test | ~/code/tap-formatter/bin/cmd.js'",
     "lint": "eslint src",
     "build": "babel src -d lib --ignore '**/*.test.js,__mocks__'",
     "test-report": "yarn coverage",
@@ -21,6 +22,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-register": "^6.26.0",
     "eslint": "3.x",
-    "tap": "^14.1.11"
+    "nodemon": "^1.19.1",
+    "tap": "^14.1.11",
+    "tape": "^4.10.1"
   }
 }
