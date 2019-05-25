@@ -1,5 +1,5 @@
 import tap from 'tap'
-import monoid from './monoid'
+import { stringMonoid } from './monoid'
 
 const isFunction = (value) => typeof value === 'function'
 
@@ -11,15 +11,7 @@ const isMonoid = (x) => hasOwnMethod(x,'value')
   && hasOwnMethod(x,'identity')
   && hasOwnMethod(x,'combine')
 
-const stringMonoid = (value) => {
-  const combine = (a, b) => `${a}${b}`
-  const identityValue = ''
-  return {
-    value: () => value,
-    identity: () => stringMonoid(identityValue),
-    combine: (a) => stringMonoid(combine(value, a.value())),
-  }
-}
+
 
 tap.test('stringMonoid', (t) => {
   const a = stringMonoid('a')
