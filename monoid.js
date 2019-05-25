@@ -2,6 +2,7 @@
 
 function AdditionMonoid(value) { this.value = value }
 
+// identity element - when combined with another, is a no-op
 AdditionMonoid.prototype.getIdentityElement = function () {
   return new AdditionMonoid(0)
 }
