@@ -1,0 +1,6 @@
+.nyc_output/
+.scannerwork/
+coverage/
+eslint-report.json
+lib/
+node_modules/

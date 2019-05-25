@@ -1,0 +1,26 @@
+{
+  "name": "learn-fp",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "babel-node src/index.js",
+    "test": "tap",
+    "lint": "eslint src",
+    "build": "babel src -d lib --ignore '**/*.test.js,__mocks__'",
+    "test-report": "yarn coverage",
+    "lint-report": "yarn lint --format json --output-file eslint-report.json",
+    "report": "yarn test-report && yarn lint-report && sonar-scanner"
+  },
+  "author": "Jeremy Greer <jex.grizzle@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.9.0",
+    "babel-core": "^6",
+    "babel-eslint": "7",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "eslint": "3.x",
+    "tap": "^14.1.11"
+  }
+}
