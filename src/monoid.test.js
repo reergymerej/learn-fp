@@ -1,5 +1,5 @@
 import tap from 'tap'
-import { stringMonoid } from './monoid'
+import monoid, { stringMonoid } from './monoid'
 
 const isFunction = (value) => typeof value === 'function'
 
@@ -38,6 +38,22 @@ tap.test('stringMonoid', (t) => {
   let result2 = a.combine(bc)
   t.equal(isMonoid(result), true)
   t.equal(result.value(), result2.value())
+
+  t.end()
+})
+
+
+tap.test('positiveNumMonoid', (t) => {
+  const positiveNumMonoid = monoid(
+    (a, b) => a + b,
+    0
+  )
+
+  const a = positiveNumMonoid(1)
+  const b = positiveNumMonoid(3)
+  const result = a.combine(b)
+  t.equal(isMonoid(result), true)
+  t.equal(result.value(), result.value())
 
   t.end()
 })
