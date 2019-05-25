@@ -2,14 +2,16 @@
 
 function AdditionMonoid(value) { this.value = value }
 
+AdditionMonoid.prototype.combine = function (a) {
+  return new AdditionMonoid(this.value + a.value)
+}
+
+
 // identity element - when combined with another, is a no-op
 AdditionMonoid.prototype.getIdentityElement = function () {
   return new AdditionMonoid(0)
 }
 
-AdditionMonoid.prototype.combine = function (a) {
-  return new AdditionMonoid(this.value + a.value)
-}
 
 // closure - combining with each other results in another
 const a = new AdditionMonoid(1)
@@ -17,9 +19,11 @@ const b = new AdditionMonoid(9)
 const c = a.combine(b)
 console.log(c instanceof AdditionMonoid)
 
+
 // associative, (a + b) + c = a + (b + c)
 console.log(a.combine(b.combine(c)))
 console.log(c.combine(a.combine(b)))
+
 
 
 // ------------------------------------------------------------------------------
@@ -28,6 +32,7 @@ console.log(c.combine(a.combine(b)))
 
 const reduce = (items) => items.reduce((acc, value) => value.combine(acc),
   (items[0]).getIdentityElement()) // used as a starting element
+
 
 
 
