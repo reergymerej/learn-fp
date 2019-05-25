@@ -1,24 +1,5 @@
 import tap from 'tap'
-import Monoid from './Monoid'
-
-tap.test('Monoid', (t) => {
-  const x = new Monoid()
-  t.equal(x.constructor.name, 'Monoid')
-  t.end()
-})
-
-tap.test('Monoid.combine', (t) => {
-  const x = new Monoid()
-  t.equal(typeof x.combine, 'function')
-  t.end()
-})
-
-tap.test('Monoid.identity', (t) => {
-  const x = new Monoid()
-  t.equal(typeof x.identity, 'function')
-  t.end()
-})
-
+import monoid from './monoid'
 
 const isFunction = (value) => typeof value === 'function'
 
