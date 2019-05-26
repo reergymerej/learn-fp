@@ -39,6 +39,18 @@ tape('stringMonoid', (t) => {
   t.equal(isMonoid(result), true)
   t.equal(result.value(), result2.value())
 
+  const functor = [
+    stringMonoid('hello'),
+    stringMonoid('goodbye'),
+    stringMonoid('what'),
+  ]
+
+  const question = (x) => `${x}?`
+
+  result = functor.map(question)
+
+  console.log(result)
+
   t.end()
 })
 
@@ -53,7 +65,22 @@ tape('positiveNumMonoid', (t) => {
   const b = positiveNumMonoid(3)
   const result = a.combine(b)
   t.equal(isMonoid(result), true)
-  t.equal(result.value(), result.value())
+  t.equal(result.value(), 4)
+
+  t.end()
+})
+
+tape('listMonoid', (t) => {
+  const listMonoid = monoid(
+    (a, b) => [...a, ...b],
+    []
+  )
+
+  const a = listMonoid([1])
+  const b = listMonoid([3])
+  let result = a.combine(b)
+  t.equal(isMonoid(result), true)
+  t.deepEqual(result.value(), [1, 3])
 
   t.end()
 })

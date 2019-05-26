@@ -23,7 +23,6 @@
     "babel-register": "^6.26.0",
     "eslint": "3.x",
     "nodemon": "^1.19.1",
-    "tap": "^14.1.11",
     "tape": "^4.10.1"
   }
 }
